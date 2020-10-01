@@ -328,7 +328,7 @@
                           type="submit" title="Start search"> <span
                             class="ep-sprite ep-sprite-s ep-uiInput-buttonSpriteOnly Icon SearchIcon"></span> </button>
                       </div>
-                      <script type="text/javascript">
+                      <script>
                         jQuery.ready("de_epages.remotesearch.ui.suggest", function ($) {
                           de_epages("#RemoteSearchSuggest5F6A1B770A0F111B9233").remotesearchUiSuggest({
                             required: true,
@@ -505,7 +505,7 @@
                 </div>
               </div>
             </div>
-            <script type="text/javascript">
+            <script>
               // <![CDATA[ require([ 'ep', 'jquery/jstree', 'jquery/jstree/themes', 'jquery/jstree/html_data', "$ready!" ], function ($, jstree, themes, html_data) { var treeElem = $("#" + "NavBarElementID24696246"); if (treeElem.has('ul').length) { treeElem.jstree({ "core": { "initially_open": [ "SitemapTreeRootNode" ], "animation": !(document.all && !document.querySelector) }, "plugins": [ "themes", "html_data" ], "themes": { "theme": "classic", "dots": true, "icons": false }, "html_data": { "data": treeElem.html(), "ajax": { "url": ep.config.baseUrl, "data": function (elem) { return { "ViewAction": "ViewSubCategoriesSnipplet", "ObjectID": (/(?:^|\s*)Category-(\d+)(?:\s*|$)/).exec(elem.attr('class'))[1], "_": "1600789367" } } } } }); // manipulate events "before" standard routines are executed treeElem.on("before.jstree", function (e, data) { // if open_node event is fired if (data.func === "open_node") { var $toggleLink = data.args[0].children('a[data-not_allowed]'); // if a link was clicked and the user has not the permissions to follow it (data-not_allowed="1") if ($toggleLink.length && ($toggleLink.data('not_allowed') === 1)) { e.stopImmediatePropagation(); return false; } } }); } }); // ]]> 
             </script>
             <div class="ContextBox NavBarElement2" id="NavElement_24808072">
@@ -1605,7 +1605,7 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript">
+  <script>
     require(['ep', 'ep/sslswitch'], function (ep) {
       ep.sslSwitch.addHandle(function (event, form) {
         form.append('<input type="hidden" name="SSLSwitchCookieLawMessage" value="1"/>');
@@ -1617,12 +1617,12 @@
       });
     });
   </script>
-  <script type="text/javascript">
+  <script>
     require(["jquery", "util/storage", "$ready!"], function ($,
           storage
           ) { // remove all selected products on logout var $LogoutNodes = $('a[href*="ChangeAction=Logout"]'); $LogoutNodes.each(function (event) { $(this).on('click', function (event) { storage.sessionStorage('Product::ProductComparison', null); }); }); }); 
   </script>
-  <script type="text/javascript">
+  <script>
     require(['jquery', '$ready!'], function ($) {
           var createGadgets =
             function () { // Constants. var gNodeType = 'div', gClassName = 'ep-gadget', gDataName = gClassName, gFolder = 'ui', secondClickBtn = ['facebook', 'twitter', 'otherbuttons'], $gNodes, googleMapsAPIKey = false; // Transform gadget imgs to divs $('img.' + gClassName).each(function (i, elem) { var $elem = $(elem), tmplElement = $('<div/>'), replaceElement = $elem.parent('p'); // set/remove gadget-, class- and style-values/options tmplElement .data(gDataName, $elem.data(gDataName)) .attr({ 'class': ($elem.attr('class') ? $elem.attr('class') : ''), 'style': ($elem.attr('style') ? $elem.attr('style').replace( /\s*?height:.*?;|\s*?background.*?:.*?;|\s*?display:.*?;|\s*?margin-bottom:.*?;|\s*?max-width:.*?;|\s*?width:.*?px;/g, '') : '') }); // if parent paragraph element only contains the gadget-element => replace paragraph and gadget-element by gadget-div if (replaceElement.length && replaceElement.children().length === 1 && replaceElement.text() .replace(/\s|\n|\r/g, '') === '') { replaceElement.replaceWith(tmplElement); // if parent paragraph element contains more content => replace only gadget-element by gadget-div } else { $elem.replaceWith(tmplElement); } }); // Build gadgets in the gadget div $gNodes = $(gNodeType + '.' + gClassName); if ($gNodes.length) { // Go go gadgets. $gNodes.each(function () { var $this = $(this), data = $this.data(gDataName), elem, classButton = 'ep-2-click-button SocialWeb', classButtonType; data.options.googleMapsAPIKey = false; if (data.options.type && data.options.type === "google") { data.options.googleMapsAPIKey = googleMapsAPIKey; } // if no second click button is needed if (secondClickBtn.indexOf(data.alias) === -1) { require([ ['de_epages', data.cartridge, gFolder, data.alias].join('/') ], function ($) { $this[data.cartridge + gFolder.charAt(0).toUpperCase() + gFolder.slice(1) + data.alias .charAt(0).toUpperCase() + data.alias.slice(1)](data.options); }); } else { // type of button (facebook, twitter ..) classButtonType = 'ep-2-click-button-' + data.alias; // add classes $this.addClass(classButtonType + ' ' + classButton); // add tooltip $this.attr("title", "Activate\u0020the\u0020button\u0020with\u0020a\u0020single\u0020click\u002E\u0020Only\u0020then\u0020can\u0020you\u0020share\u0020the\u0020page\u0020on\u0020social\u0020networks\u002E\u0020After\u0020activation\u002C\u0020data\u0020is\u0020sent\u0020to\u0020third\u0020parties\u002E" ); // add span (contains the switch) $this.html('<span></span>'); // add click-handler for 2-click-button $this.one('click', function (evt) { evt.preventDefault(); evt.stopPropagation(); var _this = $(this), data = $this.data(gDataName), elem = $('<div />'); elem[0].className = this.className; elem.removeClass(classButtonType + ' ' + classButton); require([ ['de_epages', data.cartridge, gFolder, data.alias].join('/') ], function ($) { // instantiate needed widget (facebook, twitter ...) elem[data.cartridge + gFolder.charAt(0).toUpperCase() + gFolder.slice(1) + data .alias.charAt(0).toUpperCase() + data.alias.slice(1)](data.options); // replace 2-click-button with widget-element _this.replaceWith(elem); }); }); } }); } }; createGadgets(); $('body').on('updatepreview', createGadgets); }); 
@@ -1635,7 +1635,7 @@
       });
     });
   </script> <!-- BEGIN etracker Tracklet 3.0 async -->
-  <script type="text/javascript">
+  <script>
     (function () {
       var et_init = function () {
         var et = document.createElement('script');
@@ -1648,14 +1648,14 @@
     })();
   </script> <!-- etracker Tracklet END -->
   <!-- BEGIN etracker Tracklet 3.0 async Parameter -->
-  <script type="text/javascript">
-    function et_params() { // etracker PARAMETER 3.0 et_pagename = "Engine_8_Cyl"; et_areas = "Categories"; et_ilevel = 1; et_url = "http%3A//shop.roverp6cars.com/epages/es146747.sf/%3FObjectPath%3D/Shops/es146747/Categories/Engine_8_Cyl"; et_tag = ""; // etracker PARAMETER END // etracker TARGET PARAMETER 3.0 // etracker TARGET PARAMETER END // etracker CAMPAIGN PARAMETER 3.0 // etracker CAMPAIGN PARAMETER END } 
+  <script>
+    function et_params() { /* etracker PARAMETER 3.0 et_pagename = "Engine_8_Cyl"; et_areas = "Categories"; et_ilevel = 1; et_url = "http%3A//shop.roverp6cars.com/epages/es146747.sf/%3FObjectPath%3D/Shops/es146747/Categories/Engine_8_Cyl"; et_tag = ""; // etracker PARAMETER END // etracker TARGET PARAMETER 3.0 // etracker TARGET PARAMETER END // etracker CAMPAIGN PARAMETER 3.0 // etracker CAMPAIGN PARAMETER END */ } 
   </script> <!-- etracker Tracklet END Parameter -->
   <!-- etracker CODE NOSCRIPT 3.0 --> <noscript>
     <p><a href='http://www.etracker.de/app?et=tVKL9s'> <img style='border:0px;' alt=''
           src='http://www.etracker.de/cnt.php?et=tVKL9s&amp;v=3.0&amp;java=n&amp;et_easy=0&amp;et_pagename=Engine_8_Cyl&amp;et_areas=Categories&amp;et_ilevel=1&amp;et_target=,,,0&amp;et_lpage=&amp;et_trig=&amp;et_se=0&amp;et_cust=0&amp;et_basket=&amp;et_url=&amp;et_tag=&amp;et_organisation=&amp;et_demographic=' /></a>
     </p>
-  </noscript> <!-- etracker CODE NOSCRIPT END-->
+  </noscript> <!-- etracker CODE NOSCRIPT END -->
   <ul style="display:none;" id="energylabel-imagelist"></ul>
 </body>
 
