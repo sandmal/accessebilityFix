@@ -117,7 +117,7 @@
           $otherbuttonsDivs = $gadgets.filter(function () {
                 var data = $(this).data(
                   'epGadget'
-                  ); // Set *isActive* properties. data && (isActive[data.alias] = true); // Filter *otherbuttons*. return (data.alias === 'otherbuttons'); }); // Facebook. if (isActive['facebook']) { window.fbAsyncInit = function () { FB.init(); }; $.ajax({ dataType: 'script', url: '//connect.facebook.net/' + region + '/all.js', cache: true }).done(function () { // Like. FB.Event.subscribe('edge.create', function (targetUrl) { _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]); }); // Unlike. FB.Event.subscribe('edge.remove', function (targetUrl) { _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]); }); // Share. FB.Event.subscribe('message.send', function (targetUrl) { _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]); }); }); } // Twitter. if (isActive['twitter']) { var regex = new RegExp('[\\?&#]' + 'url' + '=([^&#]*)'); $.ajax({ dataType: 'script', url: '//platform.twitter.com/widgets.js', cache: true }).done(function () { twttr.ready(function (twttr) { // Tweet. twttr.events.bind('tweet', function (event) { var targetUrl = ''; if (event.target && event.target.nodeName == 'IFRAME') { var params = regex.exec(event.target.src); params = params || [0, '']; _gaq.push(['_trackSocial', 'twitter', 'tweet', unescape(params[1])]); } }); // Follow. twttr.events.bind('follow', function (event) { _gaq.push(['_trackSocial', 'twitter', 'follow', event.data.user_id]); }); }); }); } // Otherbuttons. if (isActive['otherbuttons']) { $otherbuttonsDivs.on('click', 'img', function (event) { _gaq.push(['_trackSocial', event.target && event.target.alt, 'click']); }); } }); 
+                ); /* Set *isActive* properties. data && (isActive[data.alias] = true); // Filter *otherbuttons*. return (data.alias === 'otherbuttons'); }); // Facebook. if (isActive['facebook']) { window.fbAsyncInit = function () { FB.init(); }; $.ajax({ dataType: 'script', url: '//connect.facebook.net/' + region + '/all.js', cache: true }).done(function () { // Like. FB.Event.subscribe('edge.create', function (targetUrl) { _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]); }); // Unlike. FB.Event.subscribe('edge.remove', function (targetUrl) { _gaq.push(['_trackSocial', 'facebook', 'unlike', targetUrl]); }); // Share. FB.Event.subscribe('message.send', function (targetUrl) { _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]); }); }); } // Twitter. if (isActive['twitter']) { var regex = new RegExp('[\\?&#]' + 'url' + '=([^&#]*)'); $.ajax({ dataType: 'script', url: '//platform.twitter.com/widgets.js', cache: true }).done(function () { twttr.ready(function (twttr) { // Tweet. twttr.events.bind('tweet', function (event) { var targetUrl = ''; if (event.target && event.target.nodeName == 'IFRAME') { var params = regex.exec(event.target.src); params = params || [0, '']; _gaq.push(['_trackSocial', 'twitter', 'tweet', unescape(params[1])]); } }); // Follow. twttr.events.bind('follow', function (event) { _gaq.push(['_trackSocial', 'twitter', 'follow', event.data.user_id]); }); }); }); } // Otherbuttons. if (isActive['otherbuttons']) { $otherbuttonsDivs.on('click', 'img', function (event) { _gaq.push(['_trackSocial', event.target && event.target.alt, 'click']); }); } }); */
   </script>
   <meta property="og:image"
     content="https://www.epayments.co.uk/WebRoot/Store2/Shops/es146747/Styles/MileStones/logo.jpg">
@@ -1620,7 +1620,7 @@
   <script>
     require(["jquery", "util/storage", "$ready!"], function ($,
           storage
-          ) { // remove all selected products on logout var $LogoutNodes = $('a[href*="ChangeAction=Logout"]'); $LogoutNodes.each(function (event) { $(this).on('click', function (event) { storage.sessionStorage('Product::ProductComparison', null); }); }); }); 
+        ) { // remove all selected products on logout var $LogoutNodes = $('a[href*="ChangeAction=Logout"]'); $LogoutNodes.each(function (event) { $(this).on('click', function (event) { storage.sessionStorage('Product::ProductComparison', null); }); }); }); 
   </script>
   <script>
     require(['jquery', '$ready!'], function ($) {
@@ -1649,7 +1649,8 @@
   </script> <!-- etracker Tracklet END -->
   <!-- BEGIN etracker Tracklet 3.0 async Parameter -->
   <script>
-    function et_params() { /* etracker PARAMETER 3.0 et_pagename = "Engine_8_Cyl"; et_areas = "Categories"; et_ilevel = 1; et_url = "http%3A//shop.roverp6cars.com/epages/es146747.sf/%3FObjectPath%3D/Shops/es146747/Categories/Engine_8_Cyl"; et_tag = ""; // etracker PARAMETER END // etracker TARGET PARAMETER 3.0 // etracker TARGET PARAMETER END // etracker CAMPAIGN PARAMETER 3.0 // etracker CAMPAIGN PARAMETER END */ } 
+    function et_params() {
+      /* etracker PARAMETER 3.0 et_pagename = "Engine_8_Cyl"; et_areas = "Categories"; et_ilevel = 1; et_url = "http%3A//shop.roverp6cars.com/epages/es146747.sf/%3FObjectPath%3D/Shops/es146747/Categories/Engine_8_Cyl"; et_tag = ""; // etracker PARAMETER END // etracker TARGET PARAMETER 3.0 // etracker TARGET PARAMETER END // etracker CAMPAIGN PARAMETER 3.0 // etracker CAMPAIGN PARAMETER END */ }
   </script> <!-- etracker Tracklet END Parameter -->
   <!-- etracker CODE NOSCRIPT 3.0 --> <noscript>
     <p><a href='http://www.etracker.de/app?et=tVKL9s'> <img style='border:0px;' alt=''
